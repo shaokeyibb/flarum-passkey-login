@@ -1512,6 +1512,7 @@ __metadata:
   resolution: "@hikarilan/flarum-passkey-login@workspace:."
   dependencies:
     "@flarum/prettier-config": ^1.0.0
+    "@simplewebauthn/browser": ^8.3.4
     flarum-tsconfig: ^1.0.2
     flarum-webpack-config: ^2.0.0
     prettier: ^2.5.1
@@ -1631,6 +1632,22 @@ __metadata:
     react: ^16.0.0 || ^17.0.0 || ^18.0.0
     react-dom: ^16.0.0 || ^17.0.0 || ^18.0.0
   checksum: c16cf268177ed16cd63a56b8c8ec38c41b82afa16a9589accab68b3c20d821d0ad3bfde73a2695618bd04219dd992339d0bc2d6998af5ae44fd061e6b800db58
+  languageName: node
+  linkType: hard
+
+"@simplewebauthn/browser@npm:^8.3.4":
+  version: 8.3.4
+  resolution: "@simplewebauthn/browser@npm:8.3.4"
+  dependencies:
+    "@simplewebauthn/typescript-types": ^8.3.4
+  checksum: dd1365f5a64b957fe9820b465948a99f70d7eb790bd0ec9a105075a91ea6b62b323402fec8c32889ffe9f7853aeea7b971423d688561f2cc922802c6038e543c
+  languageName: node
+  linkType: hard
+
+"@simplewebauthn/typescript-types@npm:^8.3.4":
+  version: 8.3.4
+  resolution: "@simplewebauthn/typescript-types@npm:8.3.4"
+  checksum: c16484180b18a99a569440dceb0de65727c3cf182aaaa674ce9f6b5bc9e5a4e3978984eb5a6067cf38b6a97a2d603e6190436a19aa443f7b5fceb45bc23aa66f
   languageName: node
   linkType: hard
 

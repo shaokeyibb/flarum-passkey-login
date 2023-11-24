@@ -43,7 +43,6 @@ class ErrorHandler implements MiddlewareInterface
             return new JsonResponse([
                 'error_msg' => $e->getMessage(),
                 'stacktrace' => $e->getTraceAsString(),
-                'previous' => $e->getPrevious()->getMessage(),
             ], 500);
         }
     }

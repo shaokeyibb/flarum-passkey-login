@@ -13,12 +13,18 @@ namespace Hikarilan\FlarumPasskeyLogin;
 
 use Cose\Algorithm\Manager;
 use Cose\Algorithm\Signature\ECDSA\ES256;
+use Cose\Algorithm\Signature\RSA\RS256;
 use Flarum\Extend;
 use Illuminate\Container\Container;
+use Lcobucci\Clock\SystemClock;
+use Webauthn\AttestationStatement\AndroidKeyAttestationStatementSupport;
+use Webauthn\AttestationStatement\AppleAttestationStatementSupport;
 use Webauthn\AttestationStatement\AttestationObjectLoader;
 use Webauthn\AttestationStatement\AttestationStatementSupportManager;
+use Webauthn\AttestationStatement\FidoU2FAttestationStatementSupport;
 use Webauthn\AttestationStatement\NoneAttestationStatementSupport;
 use Webauthn\AttestationStatement\PackedAttestationStatementSupport;
+use Webauthn\AttestationStatement\TPMAttestationStatementSupport;
 use Webauthn\AuthenticationExtensions\ExtensionOutputCheckerHandler;
 use Webauthn\AuthenticatorAssertionResponseValidator;
 use Webauthn\AuthenticatorAttestationResponseValidator;
@@ -26,10 +32,15 @@ use Webauthn\PublicKeyCredentialLoader;
 
 $algorithmManager = Manager::create();
 $algorithmManager->add(new ES256());
+$algorithmManager->add(new RS256());
 
 $attestationStatementSupportManager = AttestationStatementSupportManager::create();
 $attestationStatementSupportManager->add(new NoneAttestationStatementSupport());
 $attestationStatementSupportManager->add(new PackedAttestationStatementSupport($algorithmManager));
+$attestationStatementSupportManager->add(new FidoU2FAttestationStatementSupport());
+$attestationStatementSupportManager->add(new TPMAttestationStatementSupport(SystemClock::fromSystemTimezone()));
+$attestationStatementSupportManager->add(new AppleAttestationStatementSupport());
+$attestationStatementSupportManager->add(new AndroidKeyAttestationStatementSupport());
 
 $extensionOutputCheckerHandler = ExtensionOutputCheckerHandler::create();
 
